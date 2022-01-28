@@ -49,7 +49,7 @@
     </div>
     <noscript>
       <div class="grid__item {{ column_size }}" {{ block.shopify_attributes }}>
-        <div class="image-bar__item image-bar__item--{{ block.id }}" style="background-image: url({{ block.settings.image | img_url: '2048x' }});"></div>
+        <div class="image-bar__item image-bar__item--{{ block.id }}" style="background-image: url({{ block.settings.image | image_url: width: 2048 }});"></div>
       </div>
     </noscript>
   {% endfor %}

@@ -78,7 +78,7 @@
               <div class="list-view-item__image-column">
                 <div class="list-view-item__image-wrapper product-card__image-wrapper">
                   {% unless item.image == null %}
-                    <img class="list-view-item__image" src="{{ item.image.src | img_url: '600x600' }}" alt="{{ item.image.alt | escape }}">
+                    <img class="list-view-item__image" src="{{ item.image.src | image_url: width: 600, height: 600 }}" alt="{{ item.image.alt | escape }}">
                   {% endunless %}
                 </div>
               </div>
@@ -104,7 +104,7 @@
   {%- endif -%}
 {% endif %}
 
-{% if search.results_count < 2  %}
+{% if search.results_count < 2 %}
   <div class="search--less-than-2-results"></div>
 {% endif %}
 

@@ -4,10 +4,10 @@
       {% if section.settings.image != blank %}
         {% capture img_id %}FeatureRowImage-{{ section.id }}{% endcapture %}
         {% capture wrapper_id %}FeatureRowImageWrapper-{{ section.id }}{% endcapture %}
-        {%- assign img_url = section.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+        {%- assign img_url = section.settings.image | image_url: width: 1, height: 1 | replace: '_1x1.', '_{width}x.' -%}
         {% include 'image-style', image: section.settings.image, height: 545, wrapper_id: wrapper_id, img_id: img_id %}
         <div id="{{ wrapper_id }}" class="feature-row__image-wrapper js">
-          <div style="padding-top:{{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100}}%;" data-image-loading-animation>
+          <div style="padding-top:{{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;" data-image-loading-animation>
             <img id="{{ img_id }}"
                  class="feature-row__image lazyload"
                  data-src="{{ img_url }}"
@@ -19,7 +19,7 @@
         </div>
 
         <noscript>
-          {{ section.settings.image | img_url: '600x600', scale: 2 | img_tag: section.settings.image.alt, 'feature-row__image' }}
+          {{ section.settings.image | image_url: width: 1200, height: 1200 | img_tag: section.settings.image.alt, 'feature-row__image' }}
         </noscript>
       {% else %}
         {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}

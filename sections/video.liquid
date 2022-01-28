@@ -66,7 +66,7 @@
       {%- endif -%}
 
       <noscript>
-        <div class="video__image"{% if section.settings.image %} style="background-image: url('{{ section.settings.image | img_url: '2048x' }}'); background-position: {{ section.settings.image_position }};"{% endif %}>
+        <div class="video__image"{% if section.settings.image %} style="background-image: url('{{ section.settings.image | image_url: width: 2048 }}'); background-position: {{ section.settings.image_position }};"{% endif %}>
           {%- if section.settings.image == blank -%}
             <div class="placeholder-background">
               {% capture current %}{% cycle 1, 2 %}{% endcapture %}

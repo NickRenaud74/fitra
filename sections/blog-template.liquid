@@ -30,7 +30,7 @@
             {% if article.image %}
               {% capture img_id %}ArticleImage-{{ article.image.id }}{% endcapture %}
               {% capture img_wrapper_id %}ArticleImageWrapper-{{ article.image.id }}{% endcapture %}
-              {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              {%- assign img_url = article.image | image_url: width: 1, height: 1 | replace: '_1x1.', '_{width}x.' -%}
 
               {% include 'image-style', image: article.image, height: 345, wrapper_id: img_wrapper_id, img_id: img_id %}
               <div id="{{ img_wrapper_id }}" class="article__grid-image-wrapper js">
@@ -46,7 +46,7 @@
               </div>
               <noscript>
                 <div class="article__grid-image-wrapper">
-                  {{ article | img_url: '345x345', scale: 2 | img_tag: article.title, 'article__grid-image' }}
+                  {{ article | image_url: width: 690, height: 690 | img_tag: article.title, 'article__grid-image' }}
                 </div>
               </noscript>
             {% endif %}
@@ -129,7 +129,7 @@
                 {% if article.image %}
                   {% capture img_id %}ArticleImage-{{ article.image.id }}{% endcapture %}
                   {% capture img_wrapper_id %}ArticleImageWrapper-{{ article.image.id }}{% endcapture %}
-                  {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  {%- assign img_url = article.image | image_url: width: 1, height: 1 | replace: '_1x1.', '_{width}x.' -%}
 
                   {% include 'image-style', image: article.image, height: 600, wrapper_id: img_wrapper_id, img_id: img_id %}
 
@@ -148,7 +148,7 @@
                   <noscript>
                     <p>
                       <a href="{{ article.url }}">
-                        {{ article | img_url: '455x300', scale: 2 | img_tag: article.title }}
+                        {{ article | image_url: width: 910, height: 600 | img_tag: article.title }}
                       </a>
                     </p>
                   </noscript>

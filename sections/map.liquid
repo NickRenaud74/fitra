@@ -64,7 +64,7 @@
              data-image-loading-animation>
         </div>
         <noscript>
-          <div class="map-section__image" style="background-image: url({{ bg_image | img_url: 'x800', crop: 'top' }});"></div>
+          <div class="map-section__image" style="background-image: url({{ bg_image | image_url: height: 800, crop: 'top' }});"></div>
         </noscript>
       {% elsif onboarding == true %}
         <div class="placeholder-background">

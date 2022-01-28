@@ -24,12 +24,12 @@
   <link rel="preload" href="{{ 'theme.js' | asset_url }}" as="script">
   <link rel="preload" href="{{ 'lazysizes.js' | asset_url }}" as="script">
 
-  {%- if canonical_url != blank  -%}
+  {%- if canonical_url != blank -%}
     <link rel="canonical" href="{{ canonical_url }}">
   {%- endif -%}
 
   {%- if settings.favicon != blank -%}
-    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+    <link rel="shortcut icon" href="{{ settings.favicon | image_url: width: 32, height: 32 }}" type="image/png">
   {%- endif -%}
 
   {%- capture seo_title -%}
@@ -106,7 +106,7 @@
         salePrice: {{ 'products.product.sale_price' | t | json }},
         sale: {{ 'products.product.on_sale' | t | json }},
         fromLowestPrice: {{ 'products.product.from_lowest_price_html' | t: lowest_price: '[price]' | json }},
-        vendor: {{'products.product.vendor' | t | json }},
+        vendor: {{ 'products.product.vendor' | t | json }},
         showMore: {{ 'general.filters.show_more' | t | json }},
         showLess: {{ 'general.filters.show_less' | t | json }},
         searchFor: {{ 'general.search.search_for' | t | json }},

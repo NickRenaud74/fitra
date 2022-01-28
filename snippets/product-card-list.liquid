@@ -17,7 +17,7 @@
     <div class="list-view-item__image-column">
       <div class="list-view-item__image-wrapper product-card__image-wrapper">
       {% unless product.featured_media == null %}
-        <img class="list-view-item__image" src="{{ product.featured_media | img_url: '95x95', scale: 2 }}" alt="{{ product.featured_media.alt }}">
+        <img class="list-view-item__image" src="{{ product.featured_media | image_url: width: 190, height: 190 }}" alt="{{ product.featured_media.alt }}">
       {% endunless %}
       </div>
     </div>

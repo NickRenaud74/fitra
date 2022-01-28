@@ -50,7 +50,7 @@
                   data-alt="{{ block_image.alt | escape }}"
                   {% endunless %}
                   class="slideshow__image box ratio-container lazyload{% unless forloop.first %} lazypreload{% endunless %} js"
-                  data-bg="{{ block_image | img_url: '300x300' }}"
+                  data-bg="{{ block_image | image_url: width: 300, height: 300 }}"
                   data-bgset="{% include 'bgset', image: block_image %}"
                   data-sizes="auto"
                   data-parent-fit="contain"
@@ -61,7 +61,7 @@
             {% endif %}
 
             <noscript>
-              <div class="slideshow__image"{% if block_image %}{% unless block_image.alt == blank %} role="img" aria-label="{{ block_image.alt | escape }}"{% endunless %} style="background-image: url('{{ block_image | img_url: '2048x' }}'); background-position: {{ block.settings.alignment }};"{% endif %}>
+              <div class="slideshow__image"{% if block_image %}{% unless block_image.alt == blank %} role="img" aria-label="{{ block_image.alt | escape }}"{% endunless %} style="background-image: url('{{ block_image | image_url: width: 2048 }}'); background-position: {{ block.settings.alignment }};"{% endif %}>
                 {% if block_image == blank %}
                   <div class="placeholder-background">
                     {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}

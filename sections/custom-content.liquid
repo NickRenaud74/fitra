@@ -51,8 +51,8 @@
           {% case block.type %}
             {% when 'image' %}
               {% if block.settings.image != blank %}
-                {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                <div style="padding-top:{{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100}}%;" data-image-loading-animation>
+                {%- assign img_url = block.settings.image | image_url: width: 1, height: 1 | replace: '_1x1.', '_{width}x.' -%}
+                <div style="padding-top:{{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;" data-image-loading-animation>
                   <img id="{{ img_id }}"
                        class="custom__image lazyload js"
                        data-src="{{ img_url }}"
@@ -137,7 +137,7 @@
                     {%- assign img = block.settings.cover_image -%}
                     {%- capture img_id -%}ArticleImage-{{ img.id }}{%- endcapture -%}
                     {%- capture img_wrapper_id -%}ArticleImageWrapper-{{ img.id }}{%- endcapture -%}
-                    {%- assign img_url = img | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                    {%- assign img_url = img | image_url: width: 1, height: 1 | replace: '_1x1.', '_{width}x.' -%}
 
                     {% include 'image-style', image: img, height: 600, wrapper_id: img_wrapper_id, img_id: img_id %}
 
@@ -145,7 +145,7 @@
                       <a href="{{ blog.url | default: '#' }}" class="blog-card__link">
                         <div class="blog-card__overlay box ratio-container js lazyload" data-bgset="{% include 'bgset', image: img %}" data-sizes="auto" data-parent-fit="cover" data-image-loading-animation></div>
                         <noscript>
-                          <div class="blog-card__overlay" style="background-image: url('{{ img | img_url: '1024x1024' }}')"></div>
+                          <div class="blog-card__overlay" style="background-image: url('{{ img | image_url: width: 1024, height: 1024 }}')"></div>
                         </noscript>
 
                         <div class="blog-card__title-wrapper">
@@ -180,7 +180,7 @@
                     {%- if article.image and cover_image != 'none' -%}
                       {%- capture img_id -%}ArticleImage-{{ article.image.id }}{%- endcapture -%}
                       {%- capture img_wrapper_id -%}ArticleImageWrapper-{{ article.image.id }}{%- endcapture -%}
-                      {%- assign img_url = article.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                      {%- assign img_url = article.image | image_url: width: 1, height: 1 | replace: '_1x1.', '_{width}x.' -%}
 
                       {% render 'image-style', image: article.image, height: 600, wrapper_id: img_wrapper_id, img_id: img_id %}
 
@@ -206,7 +206,7 @@
                       <noscript>
                         <p>
                           <a href="{{ article.url }}">
-                            {{ article | img_url: '455x300', scale: 2 | img_tag: article.title }}
+                            {{ article | image_url: width: 910, height: 600 | img_tag: article.title }}
                           </a>
                         </p>
                       </noscript>

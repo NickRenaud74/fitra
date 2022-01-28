@@ -6,7 +6,7 @@
 {%- assign show_selectors = false -%}
 
 
-{%- assign show_country_selector = section.settings.show_currency_selector  -%}
+{%- assign show_country_selector = section.settings.show_currency_selector -%}
 {%- if show_country_selector and localization.available_countries.size > 1 -%}
   {%- assign country_selector = true -%}
 {%- endif -%}

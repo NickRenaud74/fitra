@@ -31,10 +31,10 @@
           {% if block.settings.image != blank %}
             {% capture img_id %}TextColumnImage-{{ block.id }}{% endcapture %}
             {% capture wrapper_id %}TextColumnImageWrapper-{{ block.id }}{% endcapture %}
-            {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+            {%- assign img_url = block.settings.image | image_url: width: 1, height: 1 | replace: '_1x1.', '_{width}x.' -%}
             {% include 'image-style', image: block.settings.image, height: max_height, wrapper_id: wrapper_id, img_id: img_id %}
             <div id="{{ wrapper_id }}" class="feature-row__image-wrapper js">
-              <div style="padding-top:{{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100}}%;" data-image-loading-animation>
+              <div style="padding-top:{{ 1 | divided_by: block.settings.image.aspect_ratio | times: 100 }}%;" data-image-loading-animation>
                 <img id="{{ img_id }}"
                      class="feature-row__image lazyload"
                      data-src="{{ img_url }}"
@@ -46,7 +46,7 @@
             </div>
             <noscript>
               <p>
-                {{ block.settings.image | img_url: '480x480', scale: 2 | img_tag: block.settings.image.alt, 'feature-row__image' }}
+                {{ block.settings.image | image_url: width: 960, height: 960 | img_tag: block.settings.image.alt, 'feature-row__image' }}
               </p>
             </noscript>
           {% else %}

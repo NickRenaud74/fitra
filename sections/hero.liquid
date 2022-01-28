@@ -15,14 +15,14 @@
   {%- if section.settings.hero_layout == 'fixed_width' -%}
     <div class="page-width">
   {%- endif -%}
-  {%- if section.settings.hero_layout == 'fixed_width' and section.settings.hero_size ==  'adapt' -%}
+  {%- if section.settings.hero_layout == 'fixed_width' and section.settings.hero_size == 'adapt' -%}
     {%- assign slide_width = 1090 -%}
     {%- assign min_aspect_ratio = section.settings.image.aspect_ratio | default: 2.0 -%}
     <div class="hero-fixed-width hero--adapt"
          id="Hero-{{ section.id }}"
          data-layout="{{ section.settings.hero_layout }}"
          data-image-loading-animation>
-      {%- assign img_url = section.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+      {%- assign img_url = section.settings.image | image_url: width: 1, height: 1 | replace: '_1x1.', '_{width}x.' -%}
       {%- if section.settings.image.width < max_width -%}
         {%- assign slide_width = section.settings.image.width -%}
       {%- endif -%}
@@ -60,7 +60,7 @@
         </span>
       {%- endif -%}
       <noscript>
-        <div class="hero-fixed-width__image"{% if section.settings.image %}{% unless section.settings.image.alt == blank %} role="img" aria-label="{{ section.settings.image.alt | escape }}"{% endunless %} style="background-image: url('{{ section.settings.image | img_url: '2048x' }}'); background-position: center {{ section.settings.alignment }};"{% endif %}></div>
+        <div class="hero-fixed-width__image"{% if section.settings.image %}{% unless section.settings.image.alt == blank %} role="img" aria-label="{{ section.settings.image.alt | escape }}"{% endunless %} style="background-image: url('{{ section.settings.image | image_url: width: 2048 }}'); background-position: center {{ section.settings.alignment }};"{% endif %}></div>
       </noscript>
     </div>
   {%- else -%}
@@ -73,7 +73,7 @@
           aria-label="{{ section.settings.image.alt | escape }}"
           data-alt="{{ section.settings.image.alt | escape }}"
           {% endunless %}
-         data-bg="{{ section.settings.image | img_url: '300x300' }}"
+         data-bg="{{ section.settings.image | image_url: width: 300, height: 300 }}"
          data-bgset="{% include 'bgset', image: section.settings.image %}"
          data-sizes="auto"
          data-parent-fit="cover"
@@ -115,7 +115,7 @@
       </div>
     </div>
     <noscript>
-      <div class="hero hero--{{ section.settings.hero_size }}{% if section.settings.title != blank or section.settings.text != blank or section.settings.button_label != blank %} hero__overlay{% endif %}"{% if section.settings.image %}{% unless section.settings.image.alt == blank %} role="img" aria-label="{{ section.settings.image.alt | escape }}"{% endunless %} style="background-image: url('{{ section.settings.image | img_url: '2048x' }}'); background-position: center {{ section.settings.alignment }};"{% endif %}></div>
+      <div class="hero hero--{{ section.settings.hero_size }}{% if section.settings.title != blank or section.settings.text != blank or section.settings.button_label != blank %} hero__overlay{% endif %}"{% if section.settings.image %}{% unless section.settings.image.alt == blank %} role="img" aria-label="{{ section.settings.image.alt | escape }}"{% endunless %} style="background-image: url('{{ section.settings.image | image_url: width: 2048 }}'); background-position: center {{ section.settings.alignment }};"{% endif %}></div>
     </noscript>
   {%- endif -%}
   {%- if section.settings.hero_layout == 'fixed_width' -%}

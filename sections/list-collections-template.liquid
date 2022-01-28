@@ -3,7 +3,7 @@
     <h1>{{ page_title }}</h1>
   </header>
 
-  {%- assign blocks = section.blocks | sort: 'collection.all_products_count' -%}
+  
 
   {% case section.settings.grid %}
     {% when 2 %}
@@ -14,10 +14,10 @@
       {%- assign image_size = '350x' -%}
     {% when 4 %}
       {%- assign grid_item_width = 'small--one-half medium-up--one-quarter' -%}
-      {%- assign image_size = '250x' -%}
+      
     {% when 5 %}
       {%- assign grid_item_width = 'small--one-half medium-up--one-fifth' -%}
-      {%- assign image_size = '225x' -%}
+      
   {% endcase %}
 
   <ul class="grid grid--uniform">

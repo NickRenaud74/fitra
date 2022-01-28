@@ -23,7 +23,7 @@
 
   {% if settings.share_pinterest %}
     <li>
-      <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ shop.url | append: share_permalink }}&amp;media={{ share_image | img_url: '1024x1024' }}&amp;description={{ share_title | url_param_escape }}" class="btn btn--small btn--share share-pinterest">
+      <a target="_blank" href="//pinterest.com/pin/create/button/?url={{ shop.url | append: share_permalink }}&amp;media={{ share_image | image_url: width: 1024, height: 1024 }}&amp;description={{ share_title | url_param_escape }}" class="btn btn--small btn--share share-pinterest">
         {% include 'icon-pinterest' %}
         <span class="share-title" aria-hidden="true">{{ 'general.social.share_on_pinterest' | t }}</span>
         <span class="visually-hidden">{{ 'general.social.alt_text.share_on_pinterest' | t }}</span>

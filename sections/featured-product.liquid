@@ -9,7 +9,7 @@
     Get first variant, or deep linked one
   {% endcomment %}
   {%- assign current_variant = product.selected_or_first_available_variant -%}
-  {%- assign product_thumb_size = '110x110' -%}
+  
   {%- assign product_image_zoom_size = '1024x1024' -%}
   {%- assign product_image_scale = '2' -%}
   {%- assign enable_image_zoom = section.settings.enable_image_zoom -%}
@@ -106,8 +106,8 @@
                         {%- endif -%}
                       {%- endcapture -%}
 
-                      <img class="product-single__thumbnail-image" src="{{ media.preview_image | img_url: '110x110', scale: 2 }}" alt="{{ thumbnailAlt }}">
-                      {%- if media.media_type == 'video' or media.media_type =='external_video' -%}
+                      <img class="product-single__thumbnail-image" src="{{ media.preview_image | image_url: width: 220, height: 220 }}" alt="{{ thumbnailAlt }}">
+                      {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
                         <div class="product-single__thumbnail-badge">
                           {% include 'icon-video-badge-full-color' %}
                         </div>
@@ -183,10 +183,10 @@
           {% else %}
             {% capture "form_classes" -%}
               product-form product-form-{{ section.id }}
-              {%- if section.settings.enable_payment_button and product.has_only_default_variant%} product-form--payment-button-no-variants{% endif %}
+              {%- if section.settings.enable_payment_button and product.has_only_default_variant %} product-form--payment-button-no-variants{% endif %}
               {%- if current_variant.available == false %} product-form--variant-sold-out {%- endif -%}
             {%- endcapture %}
-            {% form 'product', product, class:form_classes, novalidate: 'novalidate', data-product-form: '' %}
+            {% form 'product', product, class: form_classes, novalidate: 'novalidate', data-product-form: '' %}
               {{ form | payment_terms }}
 
               {% unless section_onboarding %}

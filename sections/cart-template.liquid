@@ -22,7 +22,7 @@
               <td class="cart__meta small--text-left" data-cart-table-cell>
                 <div class="cart__product-information">
                   <div class="cart__image-wrapper">
-                    <img class="cart__image{% if item.image == null %} hide{% endif %}" src="{{ item | img_url: 'x190' }}" alt="{{ item.image.alt | escape }}" data-cart-item-image>
+                    <img class="cart__image{% if item.image == null %} hide{% endif %}" src="{{ item | image_url: height: 190 }}" alt="{{ item.image.alt | escape }}" data-cart-item-image>
                   </div>
                   <div>
                     <div class="list-view-item__title">
@@ -68,7 +68,7 @@
                       {%- for p in properties -%}
                         {% assign property_first_char = p.first | slice: 0 %}
                         <li class="product-details__item product-details__item--property
-                          {%if property_size == 0 or p.last == blank or property_first_char == '_' %} hide{% endif %}" data-cart-item-property>
+                          {% if property_size == 0 or p.last == blank or property_first_char == '_' %} hide{% endif %}" data-cart-item-property>
                           <span class="product-details__item-label" data-cart-item-property-name>{{ p.first }}: </span>
 
                           {%- comment -%}

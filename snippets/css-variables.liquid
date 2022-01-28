@@ -8,8 +8,8 @@
   {%- assign base_font = settings.type_base_font -%}
   {%- assign base_font_bolder = base_font | font_modify: 'weight', 'bolder' -%}
   {%- assign base_font_bold = base_font | font_modify: 'weight', 'bold' -%}
-  {%- assign base_font_italic = base_font | font_modify: 'style', 'italic' -%}
-  {%- assign base_font_bold_italic = base_font_bold | font_modify: 'style', 'italic' -%}
+  
+  
 
   :root {
     --color-text: {{ settings.color_text }};
@@ -61,7 +61,7 @@
 
     --color-border: {{ settings.color_borders }};
     --color-border-form: {{ settings.color_text_field_border }};
-    --color-border-form-darker: {{ settings.color_text_field_border | color_darken: 10}};
+    --color-border-form-darker: {{ settings.color_text_field_border | color_darken: 10 }};
 
     --svg-select-icon: url({{ "ico-select.svg" | asset_url }});
     --slick-img-url: url({{ "ajax-loader.gif" | asset_url }});

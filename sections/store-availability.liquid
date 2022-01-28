@@ -65,7 +65,7 @@
         {%- for availability in pick_up_availabilities -%}
           <li class="store-availability-list__item">
             <h3 class="store-availability-list__location">
-              {{availability.location.name}}
+              {{ availability.location.name }}
             </h3>
             <div class="store-availability-list__stock store-availability-small-text">
               {%- if availability.available -%}
@@ -92,7 +92,10 @@
 
 {% schema %}
 {
-  "name": {},
-  "settings": []
+  "name": {
+  },
+  "settings": [
+
+  ]
 }
 {% endschema %}
