@@ -15,19 +15,6 @@
           "color_text": "#ffffff"
         }
       },
-      "hero-1": {
-        "type": "hero",
-        "settings": {
-          "alignment": "center",
-          "hero_layout": "full_width",
-          "hero_size": "large",
-          "text_size": "large",
-          "title": "Image with text overlay",
-          "text": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.<\/p>",
-          "button_label": "",
-          "button_link": ""
-        }
-      },
       "feature-row": {
         "type": "feature-row",
         "settings": {
@@ -92,19 +79,6 @@
           "rows": 1,
           "show_vendor": true,
           "show_view_all": true
-        }
-      },
-      "hero-2": {
-        "type": "hero",
-        "settings": {
-          "alignment": "center",
-          "hero_layout": "full_width",
-          "hero_size": "medium",
-          "text_size": "large",
-          "title": "Image with text overlay",
-          "text": "<p>Use overlay text to give your customers insight into your brand. Select imagery and text that relates to your style and story.<\/p>",
-          "button_label": "",
-          "button_link": ""
         }
       },
       "quotes": {
@@ -209,12 +183,7 @@
       }
     },
     "content_for_index": [
-      "hero-1",
-      "feature-columns",
-      "collection",
-      "hero-2",
-      "quotes",
-      "image-bar"
+      "collection"
     ]
   },
   "presets": {
