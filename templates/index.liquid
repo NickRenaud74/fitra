@@ -4,7 +4,7 @@
   <div id="product-images" class="sticky-side-image">
     {{ mainProduct.featured_image | img_url: "x1440" | img_tag }}
     {%- comment -%} {% for image in mainProduct.images %}
-    {{ image | img_url: 'large' | | img_tag }}
+    {{ image | img_url: 'large' | img_tag }}
     {% endfor %} {%- endcomment -%}
   </div>
 
@@ -57,7 +57,7 @@
             {{ "product.form.submit" | t }}
             <span
               class="product-price"
-              >{{mainProduct.price | | money_without_trailing_zeros}}</span
+              >{{mainProduct.price | money_without_trailing_zeros}}</span
             >
           </button>
         </form>
