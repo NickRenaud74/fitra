@@ -1,1 +1,68 @@
-{{ content_for_index }}
+{% assign mainProduct = all_products['fitra-activity-band'] %}
+
+<div id="page-index">
+  <div id="product-images" class="sticky-side-image">
+    {{ mainProduct.featured_image | img_url: "x1440" | img_tag }}
+    {%- comment -%} {% for image in mainProduct.images %}
+    {{ image | img_url: 'large' | | img_tag }}
+    {% endfor %} {%- endcomment -%}
+  </div>
+
+  <div id="product-info" class="main-content grid">
+    <div class="valign-center">
+      <h1 class="headline-big">{{ mainProduct.title | remove: ' Activity Band' }}</h1>
+    </div>
+
+    <div class="grid two-columns">
+      <div class="headline valign-bottom">
+        <h2>{{ "product.copy.headline" | t }}</h2>
+      </div>
+
+      <div class="description">
+        <h3>{{ "product.copy.description_headline" | t }}</h3>
+        <div class="description-content">
+          {{ mainProduct.description }} 
+        </div>
+      </div>
+
+      <div class="details">
+        <ul class="list-with-stroke">
+          <li>{{ "product.details_list.item1" | t }}</li>
+          <li>{{ "product.details_list.item2" | t }}</li>
+        </ul>
+      </div>
+
+      <div class="form-wrapper">
+        <form
+          action="/cart/add"
+          method="POST"
+          enctype="multipart/form-data"
+          id="add-to-cart-form"
+        >
+          <label for="productSelect">{{ mainProduct.options.first }}</label>
+          <div class="styled-select">
+            <select name="id" id="productSelect">
+              {% for variant in mainProduct.variants %}
+              <option value="{{ variant.id }}">
+                {{ variant.title }}
+              </option>
+              {% endfor %}
+            </select>
+            <div class="select-arrow">
+              <img src="{{'icon-arrow-down.svg' | 'asset_url'}}" alt="">
+            </div>
+          </div>
+
+          <button type="submit" name="add" id="add-to-cart">
+            {{ "product.form.submit" | t }}
+            <span
+              class="product-price"
+              >{{mainProduct.price | | money_without_trailing_zeros}}</span
+            >
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
