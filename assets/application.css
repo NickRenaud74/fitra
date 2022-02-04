@@ -326,10 +326,6 @@ button {
     margin-bottom: var(--line-global);
 }
 
-#cart-lines {
-
-}
-
 table {
     table-layout: fixed;
     border-collapse: collapse;
