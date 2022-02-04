@@ -16,7 +16,7 @@
     <!-- Header hook for plugins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;900&family=Rubik&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400&family=Rubik&display=swap" rel="stylesheet">
     {{ 'application.css' | asset_url | stylesheet_tag }}
     {{'application.js' | asset_url | script_tag }}
   </head>
@@ -39,7 +39,11 @@
       <a href="/" class="link-to-home">{{ "cart.button.close" | t }}</a>
     {% endif %}
 
-    <main role="main">
+    {% if template != 'cart' and template != 'index' %}
+      {% include 'error-404'%}
+    {% endif %}
+
+    <main role="main" {% if template != 'cart' and template != 'index' %} style="display: none;"{% endif %}>
       {{ content_for_layout }}
     </main>
   </body>
