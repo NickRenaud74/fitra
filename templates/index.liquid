@@ -1,12 +1,21 @@
 {% assign mainProduct = all_products['fitra-activity-band'] %}
 
 <div id="page-index">
-  <div id="product-images" class="sticky-side-image">
-    {{ mainProduct.featured_image | img_url: "x1440" | img_tag }}
-    {%- comment -%} {% for image in mainProduct.images %}
-    {{ image | img_url: 'large' | img_tag }}
-    {% endfor %} {%- endcomment -%}
-  </div>
+    <div id="product-images">
+      {% for image in mainProduct.images %}
+        <div 
+          class="single-product-image sticky-side-image" 
+            {% if image.attached_to_variant? %}
+              data-variant="{{image.variants.first.id}}"
+            {% endif %}
+            {% if forloop.index > 1 %}
+              style="display: none;"
+            {% endif %}
+        >
+          <img src="{{ image | img_url: "x1440"}}" alt="fitra activity band">
+        </div>
+      {% endfor %}
+    </div>
 
   <div id="product-info" class="main-content grid">
     <div class="valign-center">
@@ -43,9 +52,9 @@
           <div class="styled-select">
             <select name="id" id="productSelect">
               {% for variant in mainProduct.variants %}
-              <option value="{{ variant.id }}">
-                {{ variant.title }}
-              </option>
+                <option id="option" value="{{ variant.id }}">
+                  {{ variant.title }}
+                </option>
               {% endfor %}
             </select>
             <div class="select-arrow">
